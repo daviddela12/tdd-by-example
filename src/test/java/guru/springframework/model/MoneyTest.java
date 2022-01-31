@@ -61,6 +61,16 @@ public class MoneyTest {
     }
 
     @Test
+    void testReduceAndMultiplication() {
+        SumOperation sumOperation = Money.dollar(5d).plus(Money.franc(10d));
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 0.5);
+        Money total = bank.reduce(sumOperation, "USD").multiply(3d);
+        assertEquals(Money.dollar(30d), total);
+
+    }
+
+    @Test
     void testCurrency() {
         assertEquals("USD", Money.dollar(1d).getCurrency());
     }

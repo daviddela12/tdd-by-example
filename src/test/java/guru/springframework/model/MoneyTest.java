@@ -37,6 +37,7 @@ public class MoneyTest {
         SumOperation sumOperation = money1.plus(Money.dollar(10d));
         assertEquals(Money.dollar(5d), sumOperation.getOperand1());
         assertEquals(Money.dollar(10d), sumOperation.getOperand2());
+        assertEquals(Money.dollar(15d), sumOperation.reduce("USD"));
     }
 
     @Test

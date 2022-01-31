@@ -2,16 +2,22 @@ package guru.springframework;
 
 import java.util.Objects;
 
-public class Money {
+public abstract class Money {
     private Double amount;
 
     public Money(Double amount) {
         this.amount = amount;
     }
 
-    public Money multiply( Double multiplier ) {
-        return new Money(this.amount * multiplier);
+    public static Money dollar( Double amount ) {
+        return new Dollar(amount);
     }
+
+    public static Money franc( Double amount ) {
+        return new Franc(amount);
+    }
+
+    abstract public Money multiply( Double multiplier );
 
     public Double getAmount() {
         return amount;
@@ -24,7 +30,7 @@ public class Money {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || (getClass() != o.getClass() && o.getClass().isAssignableFrom(getClass()) && getClass().isAssignableFrom(o.getClass()))) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Money money = (Money) o;
         return Objects.equals(amount, money.amount);
     }

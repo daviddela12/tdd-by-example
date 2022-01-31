@@ -5,6 +5,8 @@ import java.util.Objects;
 public abstract class Money {
     private Double amount;
 
+    private String currency;
+
     public Money(Double amount) {
         this.amount = amount;
     }
@@ -25,6 +27,14 @@ public abstract class Money {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
     @Override

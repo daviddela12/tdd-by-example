@@ -11,9 +11,10 @@ public class MoneyTest {
     void testMultiplication() {
         Dollar dollar = new Dollar(5d);
         Dollar product = dollar.multiply(2d);
-        assertEquals(10d, (double) product.getAmount());
+        assertEquals(new Dollar(10d), product);
         product = dollar.multiply(3d);
-        assertEquals(15d, (double) product.getAmount());
+        assertEquals(new Dollar(15d), product);
+        assertNotEquals(new Dollar(20d), product);
     }
 
     @Test

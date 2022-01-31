@@ -8,7 +8,7 @@ public class Dollar extends Money {
     }
 
     public Money multiply( Double multiplier ) {
-        return new Dollar(this.getAmount() * multiplier);
+        return Money.dollar(this.getAmount() * multiplier);
     }
 
 }

@@ -1,8 +1,8 @@
-package guru.springframework;
+package guru.springframework.model;
 
 import java.util.Objects;
 
-public abstract class Money {
+public class Money {
     private Double amount;
 
     private String currency;
@@ -13,14 +13,20 @@ public abstract class Money {
     }
 
     public static Money dollar( Double amount ) {
-        return new Dollar(amount);
+        return new Money(amount, "USD");
     }
 
     public static Money franc( Double amount ) {
-        return new Franc(amount);
+        return new Money(amount, "CHF");
     }
 
-    abstract public Money multiply( Double multiplier );
+    public Money multiply( Double multiplier ) {
+        return new Money(this.getAmount() * multiplier, this.getCurrency());
+    }
+
+    public SumOperation plus(Money money2) {
+        return new SumOperation(this, money2);
+    }
 
     public Double getAmount() {
         return amount;
@@ -37,8 +43,9 @@ public abstract class Money {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null) return false;
         Money money = (Money) o;
+        if (this.getCurrency() != money.getCurrency()) return false;
         return Objects.equals(amount, money.amount);
     }
 

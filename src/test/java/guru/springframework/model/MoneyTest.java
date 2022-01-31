@@ -1,4 +1,4 @@
-package guru.springframework;
+package guru.springframework.model;
 
 import org.junit.jupiter.api.Test;
 
@@ -21,6 +21,14 @@ public class MoneyTest {
     void testEqualityDollar() {
         assertEquals(Money.dollar(5d), Money.dollar(5d));
         assertNotEquals(Money.dollar(5d), Money.dollar(3d));
+    }
+
+    @Test
+    void testSumDollar() {
+        Money money1 = Money.dollar(5d);
+        SumOperation sumOperation = money1.plus(Money.dollar(10d));
+        assertEquals(Money.dollar(5d), sumOperation.getOperand1());
+        assertEquals(Money.dollar(10d), sumOperation.getOperand2());
     }
 
     @Test

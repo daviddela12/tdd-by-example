@@ -48,6 +48,19 @@ public class MoneyTest {
     }
 
     @Test
+    void testReduceMultipleCurrencies() {
+        SumOperation sumOperation = Money.dollar(5d).plus(Money.franc(10d));
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 0.5); //la mitad vale el CHF con respecto a USD
+        bank.addRate("USD", "CHF", 2d);
+        Money total = bank.reduce(sumOperation, "USD");
+        assertEquals( Money.dollar(10d), total );
+
+        Money totalChf = bank.reduce(sumOperation, "CHF");
+        assertEquals( Money.franc(20d), totalChf );
+    }
+
+    @Test
     void testCurrency() {
         assertEquals("USD", Money.dollar(1d).getCurrency());
     }

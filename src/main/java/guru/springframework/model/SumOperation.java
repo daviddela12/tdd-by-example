@@ -1,5 +1,7 @@
 package guru.springframework.model;
 
+import java.util.HashMap;
+
 public class SumOperation {
     Money operand1;
     Money operand2;

@@ -7,8 +7,9 @@ public abstract class Money {
 
     private String currency;
 
-    public Money(Double amount) {
+    public Money(Double amount, String currency) {
         this.amount = amount;
+        this.currency = currency;
     }
 
     public static Money dollar( Double amount ) {
@@ -31,10 +32,6 @@ public abstract class Money {
 
     public String getCurrency() {
         return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
     }
 
     @Override

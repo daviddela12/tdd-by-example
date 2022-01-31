@@ -9,7 +9,9 @@ public class MoneyTest {
     @Test
     void testMultiplication() {
         Dollar dollar = new Dollar(5d);
-        dollar.multiply(2d);
-        assertEquals(10d, (double) dollar.amount);
+        Dollar product = dollar.multiply(2d);
+        assertEquals(10d, (double) product.getAmount());
+        product = dollar.multiply(3d);
+        assertEquals(15d, (double) product.getAmount());
     }
 }

@@ -29,6 +29,4 @@ public class SumOperation {
     public void setOperand2(Money operand2) {
         this.operand2 = operand2;
     }
-
-    preuba 2
 }
